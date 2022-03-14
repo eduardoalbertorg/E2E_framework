@@ -14,6 +14,7 @@ public class HomePage extends Base {
 		driver = initializeDriver();
 		driver.get("http://qaclickacademy.com");
 		LandingPage landing = new LandingPage(driver);
+		landing.getNoThanksButton().click();
 		landing.getLogin().click();
 	}
 

@@ -8,7 +8,8 @@ public class LandingPage {
 
 	public WebDriver driver;
 	
-	By signin = By.cssSelector("a[href*='sign in'");
+	By signin = By.cssSelector("a[href*='sign_in'");
+	By noThanksButton = By.xpath("//button[contains(text(), 'NO THANKS')]");
 
 	public LandingPage(WebDriver driver) {
 		this.driver = driver;
@@ -16,5 +17,9 @@ public class LandingPage {
 	
 	public WebElement getLogin() {
 		return driver.findElement(signin);
+	}
+	
+	public WebElement getNoThanksButton() {
+		return driver.findElement(noThanksButton);
 	}
 }
