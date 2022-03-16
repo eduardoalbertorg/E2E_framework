@@ -13,9 +13,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Base {
 	
 	public WebDriver driver;
+	public Properties prop;
 	
 	public WebDriver initializeDriver() throws IOException {
-		Properties prop = new Properties();
+		prop = new Properties();
 		FileInputStream fis = new FileInputStream("C:\\Users\\Hemad\\eclipse-workspace\\E2EProject\\src\\main\\java\\resources\\data.properties");
 		prop.load(fis);
 		String browserName = prop.getProperty("browser");
