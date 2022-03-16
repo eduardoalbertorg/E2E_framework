@@ -1,4 +1,4 @@
-package Academy;
+package academy;
 
 import static org.junit.Assert.assertTrue;
 
