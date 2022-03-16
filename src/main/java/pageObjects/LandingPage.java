@@ -10,7 +10,8 @@ public class LandingPage {
 	
 	By signin = By.cssSelector("a[href*='sign_in'");
 	By noThanksButton = By.xpath("//button[contains(text(), 'NO THANKS')]");
-
+	By featuredCoursesTitle = By.cssSelector(".text-center > h2");
+	
 	public LandingPage(WebDriver driver) {
 		this.driver = driver;
 	}
@@ -21,5 +22,9 @@ public class LandingPage {
 	
 	public WebElement getNoThanksButton() {
 		return driver.findElement(noThanksButton);
+	}
+	
+	public WebElement getFeaturedCoursesTitle() {
+		return driver.findElement(featuredCoursesTitle);
 	}
 }
