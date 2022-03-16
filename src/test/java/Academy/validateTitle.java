@@ -9,11 +9,11 @@ import org.testng.annotations.DataProvider;
 import pageObjects.LandingPage;
 import resources.Base;
 
-public class validateTitle extends Base {
+public class ValidateTitle extends Base {
 	@Test(dataProvider = "getData")
 	public void basePageNavigation(String Username, String Password, String text) throws IOException {
 		driver = initializeDriver();
-		driver.get("http://qaclickacademy.com");
+		driver.get(prop.getProperty("baseUrl"));
 		LandingPage landing = new LandingPage(driver);
 		String actualTitle = landing.getFeaturedCoursesTitle().getText();
 		AssertJUnit.assertEquals(actualTitle, "Featured Courses");
