@@ -2,6 +2,8 @@ package academy;
 
 import java.io.IOException;
 
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,10 +13,14 @@ import resources.Base;
 
 public class HomePage extends Base {
 	
-	@Test(dataProvider = "getData")
-	public void basePageNavigation(String Username, String Password, String text) throws IOException {
+	@BeforeTest
+	public void intialize() throws IOException {
 		driver = initializeDriver();
 		driver.get(prop.getProperty("baseUrl"));
+	}
+	
+	@Test(dataProvider = "getData")
+	public void basePageNavigation(String Username, String Password, String text) {
 		LandingPage landing = new LandingPage(driver);
 		LoginPage login = new LoginPage(driver);
 		landing.getNoThanksButton().click();
@@ -22,7 +28,6 @@ public class HomePage extends Base {
 		login.getEmail().sendKeys(Username);
 		login.getPassword().sendKeys(Password);
 		login.getLoginButton().click();
-		driver.quit();
 	}
 	
 	@DataProvider
@@ -38,6 +43,11 @@ public class HomePage extends Base {
 		data[1][1] = "456788";
 		data[1][2] = "Non restrictec user";
 		return data;
+	}
+	
+	@AfterTest
+	public void teardown() {
+		driver.close();
 	}
 
 }
