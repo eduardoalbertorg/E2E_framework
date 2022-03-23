@@ -16,14 +16,16 @@ public class HomePage extends Base {
 	@BeforeTest
 	public void intialize() throws IOException {
 		driver = initializeDriver();
-		driver.get(prop.getProperty("baseUrl"));
 	}
 	
 	@Test(dataProvider = "getData")
 	public void basePageNavigation(String Username, String Password, String text) {
+		driver.get(prop.getProperty("baseUrl"));
 		LandingPage landing = new LandingPage(driver);
 		LoginPage login = new LoginPage(driver);
-		landing.getNoThanksButton().click();
+		if(landing.isNoThanksButtonPresent()) {
+			landing.getNoThanksButton().click();	
+		}
 		landing.getLogin().click();
 		login.getEmail().sendKeys(Username);
 		login.getPassword().sendKeys(Password);
@@ -37,11 +39,12 @@ public class HomePage extends Base {
 		Object[][] data = new Object[2][3];
 		data[0][0] = "nonrestricteduser@qw.com";
 		data[0][1] = "123456";
-		data[0][2] = "Restricted User";
+		data[0][2] = "Non restricted User";
 		
 		data[1][0] = "restricteduser@qw.com";
 		data[1][1] = "456788";
-		data[1][2] = "Non restrictec user";
+		data[1][2] = "Restricted user";
+	
 		return data;
 	}
 	
