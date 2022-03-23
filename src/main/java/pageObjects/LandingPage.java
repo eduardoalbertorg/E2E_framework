@@ -25,6 +25,10 @@ public class LandingPage {
 		return driver.findElement(noThanksButton);
 	}
 	
+	public boolean isNoThanksButtonPresent() {
+		return driver.findElements(noThanksButton).size() > 0;
+	}
+	
 	public WebElement getFeaturedCoursesTitle() {
 		return driver.findElement(featuredCoursesTitle);
 	}
